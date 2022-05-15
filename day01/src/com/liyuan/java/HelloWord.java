@@ -2,7 +2,6 @@ package com.liyuan.java;
 
 /**
  * @author liyuan_start
- * @create 2022-02-05 16:06
  */
 /*
 对第一个java程序进行总结
