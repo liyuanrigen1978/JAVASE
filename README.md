@@ -1,1 +1,1 @@
-# JAVASE
+# JAVASEの練習集
