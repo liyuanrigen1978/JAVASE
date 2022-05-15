@@ -1,12 +1,5 @@
 package com.liyuan.java;
 
-/**
- * @author liyuan_start
- *
- */
-
-
-
 /*
 练习：随意给出一个三位数的整数，打印显示它的个位数，十位数，百位数的值。
 格式如下：
