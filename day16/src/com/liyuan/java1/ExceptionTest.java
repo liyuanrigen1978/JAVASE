@@ -82,7 +82,8 @@ public class ExceptionTest {
 		Object obj = new Date();
 		String str = (String)obj;
 	}
-	
+
+
 	//IndexOutOfBoundsException
 	@Test
 	public void test2(){
