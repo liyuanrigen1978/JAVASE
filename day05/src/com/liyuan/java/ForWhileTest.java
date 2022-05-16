@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * @author liyuan_start
- * @create 2022-05-15 17:45
  */
 public class ForWhileTest {
     public static void main(String[] args) {

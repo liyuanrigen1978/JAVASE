@@ -2,7 +2,6 @@ package com.liyuan.java;
 
 /**
  * @author liyuan_start
- * @create 2022-05-15 17:46
  */
 public class PrimeNumberTest {
     public static void main(String[] args) {
