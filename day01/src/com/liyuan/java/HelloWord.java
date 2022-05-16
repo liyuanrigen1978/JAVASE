@@ -33,10 +33,3 @@ public class HelloWord {
     }
 }
 
-class Person{
-
-}
-
-class Animal{
-
-}
