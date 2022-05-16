@@ -27,7 +27,6 @@ public class InstanceTest {
 		
 		
 		//匿名对象
-//		new Phone().sendEmail();
 //		new Phone().playGame();
 		
 		new Phone().price = 1999;
