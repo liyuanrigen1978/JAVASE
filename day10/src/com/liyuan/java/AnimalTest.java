@@ -31,9 +31,7 @@ public class AnimalTest {
 //		a.legs = 4;//The field Animal.legs is not visible
 		
 		a.show();
-		
-//		a.legs = -4;
-//		a.setLegs(6);
+
 		a.setLegs(-6);
 		
 //		a.legs = -4;//The field Animal.legs is not visible
