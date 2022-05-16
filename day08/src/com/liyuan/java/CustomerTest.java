@@ -81,6 +81,8 @@ class Customer{
 	public void eat(){
 		System.out.println("客户吃饭");
 		return;
+		//return后不可以声明表达式
+//		System.out.println("hello");
 	}
 	
 	public void sleep(int hour){
