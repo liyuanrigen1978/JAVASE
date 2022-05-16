@@ -7,13 +7,6 @@ package com.liyuan.java;
 public class ForTest {
     public static void main(String[] args) {
 
-		/*
-		System.out.println("Hello World!");
-		System.out.println("Hello World!");
-		System.out.println("Hello World!");
-		System.out.println("Hello World!");
-		System.out.println("Hello World!");
-		*/
 
         for(int i = 1;i <= 5;i++){//i:1,2,3,4,5
             System.out.println("Hello World!");
