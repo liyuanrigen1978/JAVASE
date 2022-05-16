@@ -38,7 +38,6 @@ import java.util.HashMap;
  * 30.调出生成getter/setter/构造器等结构： alt + shift + s
  * 31.显示当前选择资源(工程 or 文件)的属性：alt + enter
  * 32.快速查找：参照选中的Word快速定位到下一个 ：ctrl + k
- * 
  * 33.关闭当前窗口：ctrl + w
  * 34.关闭所有的窗口：ctrl + shift + w
  * 35.查看指定的结构使用过的地方：ctrl + alt + g
