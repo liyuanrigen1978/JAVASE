@@ -5,9 +5,6 @@ package com.liyuan.java;
  *
  */
 
-
-
-
 /*
 运算符之三：比较运算符
 ==  !=  >  <  >= <=  instanceof
