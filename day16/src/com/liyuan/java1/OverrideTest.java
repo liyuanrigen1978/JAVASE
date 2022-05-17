@@ -36,6 +36,7 @@ class SuperClass{
 }
 
 class SubClass extends SuperClass{
+	@Override
 	public void method()throws FileNotFoundException{
 		
 	}
