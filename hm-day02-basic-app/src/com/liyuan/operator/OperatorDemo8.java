@@ -1,6 +1,42 @@
 package com.liyuan.operator;
 
+
+/*
+三元运算符介绍
+
+条件表达式 ?  值1 : 值2;
+
+执行流程：首先计算关系表达式的值，如果值为true，返回值1，如果为false，返回值2。
+ */
+
+
+import org.junit.Test;
+
 public class OperatorDemo8 {
+
+    @Test
+    public void Test2(){
+        int a = 50;
+
+        boolean rs = a > 30 ? true : false;
+        System.out.println(rs);
+
+    }
+
+
+    @Test
+    public void Test1(){
+
+        double score = 60;
+
+        String rs = score>60 ? "及格":"不及格";
+        System.out.println(rs);
+
+
+    }
+
+
+
     public static void main(String[] args) {
         // 目标：学会使用三元运算符，理解其流程
         double score = 18;
