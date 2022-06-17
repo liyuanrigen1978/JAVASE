@@ -1,4 +1,4 @@
-package com.liyuan.p2.util;
+package com.liyuan.demo.customer.util;
 
 import java.util.*;
 /**
@@ -125,4 +125,3 @@ public class CMUtility {
         return line;
     }
 }
-
