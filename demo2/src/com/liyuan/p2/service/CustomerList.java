@@ -94,11 +94,11 @@ public class CustomerList {
 	public Customer[] getAllCustomers() {
 //		return customers;
 		
-		Customer[] custs = new Customer[total];
-		for(int i = 0;i < total;i++){
-			custs[i] = customers[i];
-		}
-		return custs;
+//		Customer[] custs = new Customer[total];
+//		for(int i = 0;i < total;i++){
+//			custs[i] = customers[i];
+//		}
+		return customers;
 		
 	}
 	/**

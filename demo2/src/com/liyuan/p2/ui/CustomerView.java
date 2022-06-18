@@ -215,11 +215,17 @@ public class CustomerView {
 		}else{
 			System.out.println("编号\t姓名\t性别\t年龄\t电话\t\t邮箱");
 			Customer[] custs = customerList.getAllCustomers();
+
 			for(int i = 0;i < custs.length;i++){
-				Customer cust = custs[i];
-				System.out.println((i + 1) + "\t" + cust.getName() + 
-						"\t" + cust.getGender() + "\t" + cust.getAge() + 
-						"\t" + cust.getPhone() + "\t" + cust.getEmail());
+				if(custs[i] != null){
+					Customer cust = custs[i];
+					System.out.println((i + 1) + "\t" + cust.getName() +
+							"\t" + cust.getGender() + "\t" + cust.getAge() +
+							"\t" + cust.getPhone() + "\t" + cust.getEmail());
+				}else{
+					break;
+				}
+
 			}
 		}
 		
