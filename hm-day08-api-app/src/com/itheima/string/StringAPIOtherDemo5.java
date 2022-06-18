@@ -28,13 +28,13 @@ public class StringAPIOtherDemo5 {
 
 
         //public String substring(int beginIndex, int endIndex) 根据开始和结束索引进行截取，得到新的字符串（包前不包后）
-
+        System.out.println(testName.substring(0, 4));
 
         //public String substring(int beginIndex)   从传入的索引处截取，截取到末尾，得到新的字符串
-
+        System.out.println(testName.substring(2));
 
         //public String replace(CharSequence target,CharSequence replacement)使用新值，将字符串中的旧值替换，得到新的字符串
-
+        System.out.println(testName.replace("我的", "#"));
 
         //public String[] split(String regex)           根据传入的规则切割字符串，得到字符串数组返回
 
