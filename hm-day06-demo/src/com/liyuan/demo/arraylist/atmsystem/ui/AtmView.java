@@ -84,7 +84,7 @@ public class AtmView {
                         //登录成功
                         System.out.println("欢迎你：" + account.getUserName() + "先生/女士进入系统，您可开始办理你的业务了!");
                         //展示登录后的用户业务操作页面
-                        showUserControlView(sc, account);
+                        showUserControlView(sc, account,accounts);
                         return;
                     } else {
                         //登录失败
@@ -159,7 +159,7 @@ public class AtmView {
      * @param sc
      * @param account
      */
-    private static void showUserControlView(Scanner sc, Account account) {
+    private static void showUserControlView(Scanner sc, Account account,ArrayList<Account> accounts) {
 
         while (true) {
             System.out.println("================3:用户业务界面==================");
@@ -175,30 +175,31 @@ public class AtmView {
             switch (command) {
                 case 1:
                     //查询用户
-                    AtmService.showAccount(account);
+                    showAccountView(account);
                     break;
                 case 2:
                     //存款
-                    AtmService.depositMoney(account, sc);
+                    depositMoneyView(account, sc);
                     break;
                 case 3:
                     //取款
+                    drawMoney(account, sc);
                     break;
                 case 4:
                     //转账
                     break;
                 case 5:
                     //修改密码
-                    break;
+                    updatePassWordView(account,sc);
+                    return;
                 case 6:
                     //退出
-                    System.out.println("欢迎您下次再次光临！");
-                    System.out.println("=============================================");
-                    System.out.println();
+                    exitView();
                     return;
                 case 7:
                     //注销账户
-                    break;
+                    cancellAccountView(account,accounts);
+                    return;
                 default:
                     System.out.println("您输入的操作命令有误，请重新输入！");
                     System.out.println("=============================================");
@@ -206,5 +207,131 @@ public class AtmView {
 
             }
         }
+    }
+
+    /**
+     * 用户业务界面
+     * 1：查询用户信息，并展示
+     *
+     * @param account
+     */
+    public static void showAccountView(Account account) {
+        System.out.println("================3-1:您的账号信息如下===================");
+        System.out.println("卡号：" + account.getCardId());
+        System.out.println("姓名：" + account.getUserName());
+        System.out.println("余额：" + account.getMoney());
+        System.out.println("最大取款额度：" + account.getQuotaMoney());
+        System.out.println("======================================================");
+        System.out.println();
+    }
+
+    /**
+     * 用户业务界面
+     * 2:存款操作
+     *
+     * @param account
+     * @param sc
+     */
+    public static void depositMoneyView(Account account, Scanner sc) {
+        System.out.println("====================3-2:存款界面=====================");
+        System.out.println("请输入您的存款金额：");
+        double money = sc.nextDouble();
+
+        account.setMoney(account.getMoney() + money);
+        System.out.println("存款完成！");
+        //存款完成后，重新展示账号信息
+        showAccountView(account);
+    }
+
+
+    /**
+     * 用户业务界面
+     * 3:取款操作
+     *
+     * @param account
+     * @param sc
+     */
+    private static void drawMoney(Account account, Scanner sc) {
+        System.out.println("====================3-3:存款界面=====================");
+        //余额
+        double balance = account.getMoney();
+        //判断余额是否大于100
+        if (balance >= 100) {
+            while (true) {
+                System.out.println("请您输入取钱的金额：");
+                double drawMoney = sc.nextDouble();
+                if (drawMoney > account.getQuotaMoney()) {
+                    System.out.println("您当前取款金额超过了每次限额！");
+                } else {
+                    // 4、判断当前取钱金额是超过了账户的余额
+                    if (drawMoney > balance) {
+                        System.out.println("当前余额不足！当前余额是：" + balance);
+                    } else {
+                        // 更新账户余额
+                        account.setMoney(balance - drawMoney);
+                        System.out.println("您当前取钱完成，请拿走你的钱，当前剩余余额是：" + account.getMoney());
+                        break;
+                    }
+                }
+            }
+
+        } else {
+            System.out.println("您当前账户余额不足100元，存钱去吧！");
+        }
+    }
+
+    /**
+     * 用户业务界面
+     * 5:修改密码
+     *
+     * @param account
+     * @param sc
+     */
+    private static void updatePassWordView(Account account, Scanner sc) {
+        while (true) {
+            System.out.println("请输入当前登录密码：");
+            String okPassWord = sc.next();
+            if(account.getPassWord().equals(okPassWord)){
+                while (true) {
+                    System.out.println("请输入您的新密码");
+                    String newPassWord = sc.next();
+                    System.out.println("请再一次输入新密码");
+                    String okNewPassWord = sc.next();
+                    if(newPassWord.equals(okNewPassWord)){
+                        account.setPassWord(newPassWord);
+                        System.out.println("密码已经修改成功，请重新登录！");
+                        return;
+                    }else{
+                        System.out.println("两次输入的密码不一致！请再一次输入！");
+                    }
+                }
+            }else{
+                System.out.println("您输入的密码有误！请重新输入正确的密码！");
+            }
+        }
+
+    }
+
+    /**
+     * 用户业务界面
+     * 6:退出操作
+     */
+    public static void exitView() {
+        System.out.println("欢迎您下次再次光临！");
+        System.out.println("=============================================");
+        System.out.println();
+    }
+
+    /**
+     * 用户业务界面
+     * 7:注销账号
+     *
+     * @param account
+     * @param accounts
+     */
+    private static void cancellAccountView(Account account, ArrayList<Account> accounts) {
+        // 从集合对象中删除当前账户对象。
+        accounts.remove(account);
+        System.out.println("您的账户已经完成了销毁，您将不可以进行登录了！");
     }
 }
