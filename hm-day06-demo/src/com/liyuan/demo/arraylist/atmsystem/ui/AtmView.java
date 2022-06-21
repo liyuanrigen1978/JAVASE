@@ -187,6 +187,7 @@ public class AtmView {
                     break;
                 case 4:
                     //转账
+                    transferMoney(account,accounts,sc);
                     break;
                 case 5:
                     //修改密码
@@ -208,6 +209,8 @@ public class AtmView {
             }
         }
     }
+
+
 
     /**
      * 用户业务界面
@@ -280,6 +283,66 @@ public class AtmView {
         }
     }
 
+
+    /**
+     * 用户业务界面
+     * 4:转账操作
+     * 
+     * @param account
+     * @param accounts
+     * @param sc
+     */
+    private static void transferMoney(Account account, ArrayList<Account> accounts, Scanner sc) {
+        //1:判断自己的账号中是否有钱
+        if(account.getMoney()<=0){
+            System.out.println("您的账号中没有余额，无法进行转账操作！");
+            return;
+        }
+        //2:判断系统中的账号数量是否超过两个
+        if(accounts.size()>= 2){
+            // 3、让当前用户输入对方的账号进行转账
+            System.out.println("请输入对方账号：");
+            String otherCardId = sc.next();
+            // 4、根据卡号查询出集合中的账户对象
+            Account otherAccount = AtmService.getAccountByCardId(otherCardId,accounts);
+            // 5、判断账户对象是否存在，而且这个账户对象不能是自己。
+            if(otherAccount != null){
+               // 6、判断当前账户是否是自己。
+                if(otherAccount.getCardId().equals(account.getCardId())){
+                    System.out.println("不能给自己的账号进行转账操作！");
+                }else{
+                    // 7、正式进入到转账逻辑了
+                    String rs = "*" + otherAccount.getUserName().substring(1);
+                    System.out.println("请输入[" + rs + "]的姓氏来进行最后确认 ");
+                    String otherPreName = sc.next();
+                    if(otherAccount.getUserName().startsWith(otherPreName)){
+                        // 认证通过
+                        while (true) {
+                            System.out.println("请您输入转账的金额（您最多可以转账：" + account.getMoney() +"元）：");
+                            double money = sc.nextDouble();
+                            if(money > account.getMoney()){
+                                System.out.println("你不听话，没有这么多钱可以转！");
+                            }else {
+                                // 开始转
+                                account.setMoney(account.getMoney() - money); // 更新自己账户
+                                otherAccount.setMoney(otherAccount.getMoney() + money);
+                                System.out.println("您已经完成转账！您当前还剩余：" + account.getMoney());
+                                return;
+                            }
+                        }
+                    }else{
+                        System.out.println("您输入的姓氏不正确，请确认！");
+                    }
+                }
+            }else{
+                System.out.println("您输入的卡号不存在！请确认后再进行操作！");
+            }
+        }else{
+            System.out.println("当前系统中没有可以转账的用户，请确认！");
+        }
+        
+    }
+    
     /**
      * 用户业务界面
      * 5:修改密码
