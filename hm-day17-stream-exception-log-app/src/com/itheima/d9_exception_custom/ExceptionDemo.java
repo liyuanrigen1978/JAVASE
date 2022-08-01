@@ -37,6 +37,11 @@ public class ExceptionDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+       // checkAge2(-23);
+
+        System.out.println("能不能走到这里");
+
     }
 
     public static void checkAge2(int age)  {
