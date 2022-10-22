@@ -20,8 +20,8 @@ public class FileInputStreamDemo03 {
 //        System.out.println(new String(buffer));
 
         // 读取全部字节数组
-        byte[] buffer = is.readAllBytes();
-        System.out.println(new String(buffer));
+//        byte[] buffer = is.readAllBytes();
+//        System.out.println(new String(buffer));
 
     }
 }
