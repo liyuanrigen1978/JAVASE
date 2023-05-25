@@ -27,9 +27,19 @@ System.out.print():只输出数据
 */
 public class HelloWord {
     public static void main(String[] args) {//public static void main(String a[]) {//arguments:参数
-        System.out.print("Hello World!");
-        System.out.println();//换行
-        System.out.println("Hello World!");
+//        System.out.print("Hello World!");
+//        System.out.println();//换行
+//        System.out.println("Hello World!");
+        int[] arr = new int[] {5,0,6,7,3,9,1,4};
+        int[] index = new int[]{6,0,2,1,3,6,7,0,2,5,4};
+        String tel = "";
+        for(int i : index){
+            tel += arr[i];
+        }
+        System.out.println(tel);
+
+
     }
+
 }
 
